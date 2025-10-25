@@ -1,6 +1,5 @@
 ﻿import { NextResponse } from 'next/server'
-import { createServerClient } from '@supabase/ssr'
-import { cookies } from 'next/headers'
+import { createClient } from '@supabase/supabase-js'
 
 export async function POST(request: Request) {
   try {
@@ -17,28 +16,20 @@ export async function POST(request: Request) {
       'Content-Type': 'application/json',
     }
 
-    // 1. Fetch Companies -> Partners
-    const companiesResponse = await fetch(
-      'https://api.hubapi.com/crm/v3/objects/companies?limit=100&properties=name,domain,phone,industry,city,state',
-      { headers }
-    )
-    const companiesData = await companiesResponse.json()
-    
-    // 2. Fetch Deals
-    const dealsResponse = await fetch(
-      'https://api.hubapi.com/crm/v3/objects/deals?limit=100&properties=dealname,amount,dealstage,closedate,description,pipeline',
-      { headers }
-    )
-    const dealsData = await dealsResponse.json()
-    
-    // 3. Fetch Contacts -> Leads
-    const contactsResponse = await fetch(
-      'https://api.hubapi.com/crm/v3/objects/contacts?limit=100&properties=firstname,lastname,email,phone,company,jobtitle',
-      { headers }
-    )
-    const contactsData = await contactsResponse.json()
+    // Fetch data from HubSpot
+    const [companiesResponse, dealsResponse, contactsResponse] = await Promise.all([
+      fetch('https://api.hubapi.com/crm/v3/objects/companies?limit=100&properties=name,domain,phone', { headers }),
+      fetch('https://api.hubapi.com/crm/v3/objects/deals?limit=100&properties=dealname,amount,dealstage,closedate', { headers }),
+      fetch('https://api.hubapi.com/crm/v3/objects/contacts?limit=100&properties=firstname,lastname,email,phone,company', { headers })
+    ])
 
-    // Map data to your schema
+    const [companiesData, dealsData, contactsData] = await Promise.all([
+      companiesResponse.json(),
+      dealsResponse.json(),
+      contactsResponse.json()
+    ])
+
+    // Map data
     const partners = (companiesData.results || []).map((company: any) => ({
       name: company.properties?.name || 'Unknown Company',
       tier: 'Bronze',
@@ -58,7 +49,6 @@ export async function POST(request: Request) {
               deal.properties?.dealstage === 'closedlost' ? 'Rejected' : 'Pending',
       partner: null,
       date: deal.properties?.closedate || new Date().toISOString().split('T')[0],
-      description: deal.properties?.description || null,
     }))
 
     const leads = (contactsData.results || []).map((contact: any) => ({
@@ -67,26 +57,20 @@ export async function POST(request: Request) {
       email: contact.properties?.email || '',
       phone: contact.properties?.phone || '',
       value: 0,
-      assigned_to: null,
       status: 'New',
       priority: 'Medium',
       date: new Date().toISOString().split('T')[0],
-      notes: contact.properties?.jobtitle || null,
     }))
 
-    console.log(`Found: ${partners.length} partners, ${deals.length} deals, ${leads.length} leads`)
-
-    // Save to Supabase
-    const cookieStore = await cookies()
-    const supabase = createServerClient(
+    // Use Service Role to bypass RLS
+    const supabase = createClient(
       process.env.NEXT_PUBLIC_SUPABASE_URL!,
-      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+      process.env.SUPABASE_SERVICE_ROLE_KEY!,
       {
-        cookies: {
-          get(name: string) {
-            return cookieStore.get(name)?.value
-          },
-        },
+        auth: {
+          autoRefreshToken: false,
+          persistSession: false
+        }
       }
     )
 
@@ -97,30 +81,31 @@ export async function POST(request: Request) {
       errors: [] as string[]
     }
 
-    // Insert Partners
+    // Insert data
     if (partners.length > 0) {
       const { data, error } = await supabase.from('partners').insert(partners).select()
       if (error) {
+        console.error('Partners error:', error)
         results.errors.push(`Partners: ${error.message}`)
       } else {
         results.partners = data?.length || 0
       }
     }
 
-    // Insert Deals
     if (deals.length > 0) {
       const { data, error } = await supabase.from('deals').insert(deals).select()
       if (error) {
+        console.error('Deals error:', error)
         results.errors.push(`Deals: ${error.message}`)
       } else {
         results.deals = data?.length || 0
       }
     }
 
-    // Insert Leads
     if (leads.length > 0) {
       const { data, error } = await supabase.from('leads').insert(leads).select()
       if (error) {
+        console.error('Leads error:', error)
         results.errors.push(`Leads: ${error.message}`)
       } else {
         results.leads = data?.length || 0
@@ -152,8 +137,6 @@ export async function POST(request: Request) {
 export async function GET() {
   return NextResponse.json({ 
     message: 'HubSpot Full Migration Endpoint',
-    imports: 'Companies (Partners), Deals, Contacts (Leads)',
-    usage: 'POST with { hubspotApiKey: "your-key" }',
     status: 'ready' 
   })
 }
