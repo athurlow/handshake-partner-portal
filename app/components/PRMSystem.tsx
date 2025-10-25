@@ -194,7 +194,7 @@ export default function PartnerPortal() {
                           }`}>
                             {partner.tier}
                           </span>
-                          <span className="text-xs text-gray-500">{partner.dealsCount} deals</span>
+                          <span className="text-xs text-gray-500">{partner.deals} deals</span>
                         </div>
                       </div>
                     </div>
