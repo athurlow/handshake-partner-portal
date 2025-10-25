@@ -58,7 +58,7 @@ export default function PartnerTable({ partners }: PartnerTableProps) {
               <td className="px-6 py-4">
                 <div className="flex items-center gap-1">
                   <TrendingUp size={16} className="text-green-600" />
-                  <span className="font-semibold text-gray-900">{partner.dealsCount}</span>
+                  <span className="font-semibold text-gray-900">{partner.deals}</span>
                 </div>
               </td>
               <td className="px-6 py-4">
