@@ -36,7 +36,6 @@ export default function AnalyticsPage() {
     }
   }
 
-  // Calculate metrics from real data
   const totalRevenue = partners.reduce((sum, p) => sum + (p.revenue || 0), 0)
   const totalDeals = deals.length
   const approvedDeals = deals.filter(d => d.status === 'Approved').length
@@ -44,9 +43,7 @@ export default function AnalyticsPage() {
   const totalLeads = leads.length
   const qualifiedLeads = leads.filter(l => l.status === 'Qualified').length
   const conversionRate = totalLeads > 0 ? Math.round((qualifiedLeads / totalLeads) * 100) : 0
-  const avgDealValue = totalDeals > 0 ? Math.round(deals.reduce((sum, d) => sum + (d.value || 0), 0) / totalDeals) : 0
 
-  // Partner revenue distribution
   const partnerRevenueData = partners
     .sort((a, b) => (b.revenue || 0) - (a.revenue || 0))
     .slice(0, 5)
@@ -55,14 +52,12 @@ export default function AnalyticsPage() {
       revenue: p.revenue || 0
     }))
 
-  // Deal status distribution
   const dealStatusData = [
     { name: 'Approved', value: approvedDeals, color: '#10b981' },
     { name: 'Pending', value: pendingDeals, color: '#f59e0b' },
     { name: 'Rejected', value: deals.filter(d => d.status === 'Rejected').length, color: '#ef4444' }
   ].filter(d => d.value > 0)
 
-  // Lead status distribution
   const leadStatusData = [
     { name: 'New', value: leads.filter(l => l.status === 'New').length, color: '#3b82f6' },
     { name: 'Contacted', value: leads.filter(l => l.status === 'Contacted').length, color: '#f59e0b' },
@@ -70,7 +65,6 @@ export default function AnalyticsPage() {
     { name: 'Converted', value: leads.filter(l => l.status === 'Converted').length, color: '#8b5cf6' }
   ].filter(d => d.value > 0)
 
-  // Partner tier distribution
   const tierData = [
     { name: 'Platinum', value: partners.filter(p => p.tier === 'Platinum').length, color: '#a855f7' },
     { name: 'Gold', value: partners.filter(p => p.tier === 'Gold').length, color: '#f59e0b' },
@@ -78,7 +72,6 @@ export default function AnalyticsPage() {
     { name: 'Bronze', value: partners.filter(p => p.tier === 'Bronze').length, color: '#ea580c' }
   ].filter(d => d.value > 0)
 
-  // Monthly trend data (simulated - you could calculate from actual dates)
   const monthlyData = [
     { month: 'Jan', revenue: totalRevenue * 0.15, deals: Math.round(totalDeals * 0.15), leads: Math.round(totalLeads * 0.15) },
     { month: 'Feb', revenue: totalRevenue * 0.18, deals: Math.round(totalDeals * 0.18), leads: Math.round(totalLeads * 0.18) },
@@ -122,10 +115,18 @@ export default function AnalyticsPage() {
     }
   ]
 
+  const renderLabel = (entry: any) => {
+    const percent = entry.percent || 0
+    return `${entry.name} ${(percent * 100).toFixed(0)}%`
+  }
+
+  const renderValueLabel = (entry: any) => {
+    return `${entry.name}: ${entry.value}`
+  }
+
   return (
     <SharedLayout>
       <div className="p-8 bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 min-h-screen">
-        {/* Header */}
         <div className="mb-8">
           <h1 className="text-5xl font-bold bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent mb-3">
             Analytics Dashboard
@@ -140,7 +141,6 @@ export default function AnalyticsPage() {
           </div>
         ) : (
           <>
-            {/* Stats Cards */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
               {stats.map((stat, index) => (
                 <div
@@ -161,9 +161,7 @@ export default function AnalyticsPage() {
               ))}
             </div>
 
-            {/* Charts Row 1 */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-              {/* Revenue by Partner */}
               <div className="bg-white rounded-3xl shadow-xl border border-gray-100 p-6 hover:shadow-2xl transition-all">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="p-3 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl">
@@ -195,7 +193,6 @@ export default function AnalyticsPage() {
                 </ResponsiveContainer>
               </div>
 
-              {/* Monthly Trends */}
               <div className="bg-white rounded-3xl shadow-xl border border-gray-100 p-6 hover:shadow-2xl transition-all">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="p-3 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl">
@@ -225,9 +222,7 @@ export default function AnalyticsPage() {
               </div>
             </div>
 
-            {/* Charts Row 2 */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
-              {/* Deal Status */}
               <div className="bg-white rounded-3xl shadow-xl border border-gray-100 p-6 hover:shadow-2xl transition-all">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="p-3 bg-gradient-to-br from-purple-500 to-pink-600 rounded-xl">
@@ -242,7 +237,7 @@ export default function AnalyticsPage() {
                       cx="50%"
                       cy="50%"
                       labelLine={false}
-                      label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
+                      label={renderLabel}
                       outerRadius={80}
                       fill="#8884d8"
                       dataKey="value"
@@ -256,7 +251,6 @@ export default function AnalyticsPage() {
                 </ResponsiveContainer>
               </div>
 
-              {/* Lead Status */}
               <div className="bg-white rounded-3xl shadow-xl border border-gray-100 p-6 hover:shadow-2xl transition-all">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="p-3 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-xl">
@@ -271,7 +265,7 @@ export default function AnalyticsPage() {
                       cx="50%"
                       cy="50%"
                       labelLine={false}
-                      label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
+                      label={renderLabel}
                       outerRadius={80}
                       fill="#8884d8"
                       dataKey="value"
@@ -285,7 +279,6 @@ export default function AnalyticsPage() {
                 </ResponsiveContainer>
               </div>
 
-              {/* Partner Tiers */}
               <div className="bg-white rounded-3xl shadow-xl border border-gray-100 p-6 hover:shadow-2xl transition-all">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="p-3 bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl">
@@ -300,7 +293,7 @@ export default function AnalyticsPage() {
                       cx="50%"
                       cy="50%"
                       labelLine={false}
-                      label={({ name, value }) => `${name}: ${value}`}
+                      label={renderValueLabel}
                       outerRadius={80}
                       fill="#8884d8"
                       dataKey="value"
@@ -315,7 +308,6 @@ export default function AnalyticsPage() {
               </div>
             </div>
 
-            {/* Top Performers */}
             <div className="bg-white rounded-3xl shadow-xl border border-gray-100 p-6 hover:shadow-2xl transition-all">
               <div className="flex items-center gap-3 mb-6">
                 <div className="p-3 bg-gradient-to-br from-yellow-500 to-orange-600 rounded-xl">
