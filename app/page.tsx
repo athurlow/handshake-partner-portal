@@ -1,11 +1,9 @@
 ﻿"use client"
 import { useState, useEffect } from 'react'
-import { useRouter } from 'next/navigation'
 import SharedLayout from '@/components/shared/SharedLayout'
-import { TrendingUp, Users, Award, DollarSign, Upload, Download, Sparkles } from 'lucide-react'
+import { TrendingUp, Users, Award, DollarSign, Sparkles } from 'lucide-react'
 
 export default function DashboardPage() {
-  const router = useRouter()
   const [partners, setPartners] = useState<any[]>([])
   const [deals, setDeals] = useState<any[]>([])
   const [leads, setLeads] = useState<any[]>([])
@@ -37,108 +35,17 @@ export default function DashboardPage() {
     }
   }
 
-  const handleExport = (type: 'partners' | 'deals' | 'leads') => {
-    let data, filename
-    
-    if (type === 'partners') {
-      data = partners
-      filename = 'handshake-partners.csv'
-    } else if (type === 'deals') {
-      data = deals
-      filename = 'handshake-deals.csv'
-    } else {
-      data = leads
-      filename = 'handshake-leads.csv'
-    }
-
-    if (data.length === 0) {
-      alert(`No ${type} to export`)
-      return
-    }
-
-    // Convert to CSV
-    const headers = Object.keys(data[0]).join(',')
-    const rows = data.map(item => Object.values(item).map(v => `"${v}"`).join(','))
-    const csv = [headers, ...rows].join('\n')
-
-    // Download
-    const blob = new Blob([csv], { type: 'text/csv' })
-    const url = window.URL.createObjectURL(blob)
-    const a = document.createElement('a')
-    a.href = url
-    a.download = filename
-    a.click()
-    window.URL.revokeObjectURL(url)
-  }
-
   const totalRevenue = partners.reduce((sum, p) => sum + (p.revenue || 0), 0)
 
   return (
     <SharedLayout>
       <div className="p-8 bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50 min-h-screen">
         <div className="mb-8">
-          <div className="flex items-center justify-between mb-6">
-            <div>
-              <h1 className="text-5xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent mb-3 flex items-center gap-3">
-                <Sparkles size={48} className="text-purple-600" />
-                Welcome to Handshake
-              </h1>
-              <p className="text-gray-600 text-lg">Your Partner Management Command Center</p>
-            </div>
-          </div>
-
-          {/* Import/Export Buttons */}
-          <div className="flex gap-4 mb-6">
-            <button
-              onClick={() => router.push('/upload')}
-              className="flex items-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-3 rounded-xl font-bold hover:from-blue-700 hover:to-indigo-700 transition-all shadow-lg hover:shadow-xl"
-            >
-              <Upload size={20} />
-              Import from HubSpot
-            </button>
-
-            <div className="relative group">
-              <button className="flex items-center gap-2 bg-gradient-to-r from-green-600 to-emerald-600 text-white px-6 py-3 rounded-xl font-bold hover:from-green-700 hover:to-emerald-700 transition-all shadow-lg hover:shadow-xl">
-                <Download size={20} />
-                Export Data
-              </button>
-              
-              {/* Dropdown menu */}
-              <div className="absolute top-full left-0 mt-2 w-48 bg-white rounded-xl shadow-2xl border border-gray-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50">
-                <button
-                  onClick={() => handleExport('partners')}
-                  className="w-full text-left px-4 py-3 hover:bg-blue-50 text-gray-700 hover:text-blue-600 font-semibold rounded-t-xl transition-colors"
-                >
-                  Export Partners
-                </button>
-                <button
-                  onClick={() => handleExport('deals')}
-                  className="w-full text-left px-4 py-3 hover:bg-purple-50 text-gray-700 hover:text-purple-600 font-semibold transition-colors"
-                >
-                  Export Deals
-                </button>
-                <button
-                  onClick={() => handleExport('leads')}
-                  className="w-full text-left px-4 py-3 hover:bg-green-50 text-gray-700 hover:text-green-600 font-semibold rounded-b-xl transition-colors"
-                >
-                  Export Leads
-                </button>
-              </div>
-            </div>
-          </div>
-
-          {/* Info Box */}
-          <div className="bg-gradient-to-r from-blue-50 to-purple-50 border-2 border-blue-200 rounded-2xl p-4">
-            <div className="flex items-center gap-3">
-              <div className="p-2 bg-blue-100 rounded-lg">
-                <Upload size={20} className="text-blue-600" />
-              </div>
-              <div className="flex-1">
-                <p className="text-sm font-bold text-blue-900">HubSpot Integration</p>
-                <p className="text-xs text-blue-700">Import: Upload CSV files from HubSpot • Export: Download your data</p>
-              </div>
-            </div>
-          </div>
+          <h1 className="text-5xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent mb-3 flex items-center gap-3">
+            <Sparkles size={48} className="text-purple-600" />
+            Welcome to Handshake
+          </h1>
+          <p className="text-gray-600 text-lg">Your Partner Management Command Center</p>
         </div>
 
         {loading ? (
