@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import SharedLayout from '@/components/shared/SharedLayout'
 import { Settings as SettingsIcon, Upload, Palette, Save, RotateCcw } from 'lucide-react'
@@ -45,7 +45,7 @@ export default function SettingsPage() {
   }
 
   return (
-    <SharedLayout activeTab="settings">
+    <SharedLayout>
       <div className="p-8 bg-gradient-to-br from-gray-50 via-indigo-50 to-purple-50 min-h-screen">
         {/* Header */}
         <div className="mb-8">
