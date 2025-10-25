@@ -2,11 +2,12 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import SharedLayout from '@/components/shared/SharedLayout'
-import { User, Bell, Lock, Database, Upload, Download, RefreshCw, Trash2 } from 'lucide-react'
+import { User, Bell, Lock, Database, Upload, Download, Palette, Image } from 'lucide-react'
 
 export default function SettingsPage() {
   const router = useRouter()
   const [exporting, setExporting] = useState(false)
+  const [primaryColor, setPrimaryColor] = useState('#6366f1')
 
   const handleExport = async (type: 'partners' | 'deals' | 'leads') => {
     setExporting(true)
@@ -134,6 +135,97 @@ export default function SettingsPage() {
               </div>
             </div>
 
+            {/* Branding & Customization Section */}
+            <div className="bg-white rounded-3xl shadow-xl border border-gray-200 overflow-hidden">
+              <div className="bg-gradient-to-r from-purple-600 to-pink-600 p-6">
+                <div className="flex items-center gap-3">
+                  <div className="p-3 bg-white bg-opacity-20 rounded-xl">
+                    <Palette size={32} className="text-white" />
+                  </div>
+                  <div>
+                    <h2 className="text-2xl font-bold text-white">Branding & Customization</h2>
+                    <p className="text-purple-100 text-sm">Customize your portal appearance</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="p-6 space-y-6">
+                {/* Logo Upload */}
+                <div>
+                  <div className="flex items-center gap-3 mb-4">
+                    <Image className="text-purple-600" size={24} />
+                    <h3 className="text-xl font-bold text-gray-900">Company Logo</h3>
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <div className="w-24 h-24 bg-gradient-to-br from-purple-100 to-pink-100 rounded-xl flex items-center justify-center border-2 border-purple-200">
+                      <Image className="text-purple-400" size={40} />
+                    </div>
+                    <div className="flex-1">
+                      <label className="block">
+                        <input type="file" accept="image/*" className="hidden" />
+                        <div className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-3 rounded-xl font-bold hover:from-purple-700 hover:to-pink-700 transition-all cursor-pointer inline-flex items-center gap-2">
+                          <Upload size={18} />
+                          Upload Logo
+                        </div>
+                      </label>
+                      <p className="text-sm text-gray-500 mt-2">PNG, JPG or SVG. Max 2MB.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="border-t-2 border-gray-100"></div>
+
+                {/* Color Customization */}
+                <div>
+                  <div className="flex items-center gap-3 mb-4">
+                    <Palette className="text-purple-600" size={24} />
+                    <h3 className="text-xl font-bold text-gray-900">Brand Colors</h3>
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <label className="block text-sm font-bold text-gray-700 mb-2">Primary Color</label>
+                      <div className="flex items-center gap-3">
+                        <input
+                          type="color"
+                          value={primaryColor}
+                          onChange={(e) => setPrimaryColor(e.target.value)}
+                          className="w-16 h-16 rounded-xl border-2 border-gray-200 cursor-pointer"
+                        />
+                        <div className="flex-1">
+                          <input
+                            type="text"
+                            value={primaryColor}
+                            onChange={(e) => setPrimaryColor(e.target.value)}
+                            className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent font-mono"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <label className="block text-sm font-bold text-gray-700 mb-2">Secondary Color</label>
+                      <div className="flex items-center gap-3">
+                        <input
+                          type="color"
+                          defaultValue="#ec4899"
+                          className="w-16 h-16 rounded-xl border-2 border-gray-200 cursor-pointer"
+                        />
+                        <div className="flex-1">
+                          <input
+                            type="text"
+                            defaultValue="#ec4899"
+                            className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-transparent font-mono"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <button className="mt-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-3 rounded-xl font-bold hover:from-purple-700 hover:to-pink-700 transition-all shadow-lg">
+                    Save Brand Settings
+                  </button>
+                </div>
+              </div>
+            </div>
+
             {/* Account Section */}
             <div className="bg-white rounded-3xl shadow-xl border border-gray-200 p-6">
               <div className="flex items-center gap-3 mb-6">
@@ -159,6 +251,9 @@ export default function SettingsPage() {
                     placeholder="Your Company"
                   />
                 </div>
+                <button className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-3 rounded-xl font-bold hover:from-indigo-700 hover:to-purple-700 transition-all shadow-lg">
+                  Save Account Settings
+                </button>
               </div>
             </div>
 
