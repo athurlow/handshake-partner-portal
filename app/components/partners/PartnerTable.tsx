@@ -1,5 +1,5 @@
 ﻿import React from 'react';
-import { TrendingUp, Mail, Phone, Calendar, Award } from 'lucide-react';
+import { TrendingUp, Mail, Phone, Calendar } from 'lucide-react';
 
 interface Partner {
   id: string;
@@ -8,9 +8,9 @@ interface Partner {
   revenue: number;
   deals: number;
   status: 'active' | 'inactive';
-  email: string;
-  phone: string;
-  joinedDate: string;
+  email?: string;
+  phone?: string;
+  joinedDate?: string;
 }
 
 interface PartnerTableProps {
@@ -50,10 +50,12 @@ export default function PartnerTable({ partners, onEdit, onDelete }: PartnerTabl
                 <div className="flex items-center gap-3">
                   <div>
                     <p className="font-semibold text-gray-900">{partner.name}</p>
-                    <div className="flex items-center gap-1 text-xs text-gray-500 mt-1">
-                      <Calendar size={12} />
-                      <span>Joined {partner.joinedDate}</span>
-                    </div>
+                    {partner.joinedDate && (
+                      <div className="flex items-center gap-1 text-xs text-gray-500 mt-1">
+                        <Calendar size={12} />
+                        <span>Joined {partner.joinedDate}</span>
+                      </div>
+                    )}
                   </div>
                 </div>
               </td>
@@ -63,12 +65,12 @@ export default function PartnerTable({ partners, onEdit, onDelete }: PartnerTabl
                 </span>
               </td>
               <td className="px-6 py-4">
-                <p className="font-bold text-green-600">${partner.revenue.toLocaleString()}</p>
+                <p className="font-bold text-green-600">${partner.revenue?.toLocaleString() || 0}</p>
               </td>
               <td className="px-6 py-4">
                 <div className="flex items-center gap-1">
                   <TrendingUp size={16} className="text-green-600" />
-                  <span className="font-semibold text-gray-900">{partner.deals}</span>
+                  <span className="font-semibold text-gray-900">{partner.deals || 0}</span>
                 </div>
               </td>
               <td className="px-6 py-4">
@@ -80,14 +82,21 @@ export default function PartnerTable({ partners, onEdit, onDelete }: PartnerTabl
               </td>
               <td className="px-6 py-4">
                 <div className="space-y-1">
-                  <div className="flex items-center gap-1 text-sm text-gray-600">
-                    <Mail size={12} />
-                    <span>{partner.email}</span>
-                  </div>
-                  <div className="flex items-center gap-1 text-sm text-gray-600">
-                    <Phone size={12} />
-                    <span>{partner.phone}</span>
-                  </div>
+                  {partner.email && (
+                    <div className="flex items-center gap-1 text-sm text-gray-600">
+                      <Mail size={12} />
+                      <span>{partner.email}</span>
+                    </div>
+                  )}
+                  {partner.phone && (
+                    <div className="flex items-center gap-1 text-sm text-gray-600">
+                      <Phone size={12} />
+                      <span>{partner.phone}</span>
+                    </div>
+                  )}
+                  {!partner.email && !partner.phone && (
+                    <span className="text-sm text-gray-400">No contact info</span>
+                  )}
                 </div>
               </td>
             </tr>
