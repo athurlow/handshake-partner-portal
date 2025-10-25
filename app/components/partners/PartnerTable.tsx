@@ -63,8 +63,8 @@ export default function PartnerTable({ partners }: PartnerTableProps) {
               </td>
               <td className="px-6 py-4">
                 <span className={`px-3 py-1 rounded-full text-xs font-medium ${
-                  partner.status === 'Active' ? 'bg-green-100 text-green-700' :
-                  partner.status === 'Pending' ? 'bg-yellow-100 text-yellow-700' :
+                  partner.status === 'active' ? 'bg-green-100 text-green-700' :
+                  partner.status === 'pending' ? 'bg-yellow-100 text-yellow-700' :
                   'bg-red-100 text-red-700'
                 }`}>
                   {partner.status}
