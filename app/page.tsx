@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 // import { useEffect } from 'react'
 // import { useRouter } from 'next/navigation'
@@ -45,7 +45,7 @@ export default function Home() {
   ]
 
   return (
-    <SharedLayout activeTab="dashboard">
+    <SharedLayout>
       <div className="p-8 bg-gradient-to-br from-gray-50 via-blue-50 to-purple-50 min-h-screen">
         {/* Welcome Header */}
         <div className="mb-8">
@@ -241,7 +241,7 @@ export default function Home() {
               </div>
               <div>
                 <p className="font-bold text-gray-900 text-lg">HubSpot Integration</p>
-                <p className="text-sm text-gray-600">Connected • Last sync: 5 minutes ago</p>
+                <p className="text-sm text-gray-600">Connected � Last sync: 5 minutes ago</p>
               </div>
             </div>
             <button className="px-6 py-3 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-xl hover:from-green-600 hover:to-emerald-700 transition-all duration-300 shadow-lg hover:shadow-xl font-medium">
