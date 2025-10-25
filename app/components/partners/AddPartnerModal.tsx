@@ -16,7 +16,7 @@ export default function AddPartnerModal({ isOpen, onClose, onSubmit }: AddPartne
     tier: 'Bronze' as Partner['tier'],
     email: '',
     phone: '',
-    status: 'Pending' as Partner['status'],
+    status: 'active' as Partner['status'],
   });
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -28,7 +28,7 @@ export default function AddPartnerModal({ isOpen, onClose, onSubmit }: AddPartne
       tier: 'Bronze',
       email: '',
       phone: '',
-      status: 'Pending',
+      status: 'active',
     });
   };
 
