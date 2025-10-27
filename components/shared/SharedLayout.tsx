@@ -26,8 +26,8 @@ export default function SharedLayout({ children }: SharedLayoutProps) {
       <aside className="w-64 text-white shadow-2xl" style={{ background: 'linear-gradient(to bottom, #2C5F7C, rgba(44, 95, 124, 0.9))' }}>
         <div className="p-6 border-b border-white/10">
           <div className="flex items-center gap-3">
-            <div className="w-12 h-12 flex-shrink-0 rounded-full overflow-hidden" style={{ backgroundColor: 'rgba(255, 255, 255, 0.2)' }}>
-              <img src="/images/logo.png" alt="Handshake" className="w-full h-full" style={{ objectFit: 'cover', objectPosition: 'center', transform: 'scale(1.3)' }} onError={(e) => { const target = e.target as HTMLImageElement; target.style.display = 'none'; target.parentElement!.innerHTML = '<div style="display: flex; align-items: center; justify-content: center; height: 100%; font-size: 1.5rem;">🤝</div>'; }} />
+            <div className="w-12 h-12 flex-shrink-0 rounded-full overflow-hidden flex items-center justify-center text-2xl" style={{ backgroundColor: 'rgba(255, 255, 255, 0.2)' }}>
+              🤝
             </div>
             <div>
               <h1 className="text-2xl font-bold text-white">Handshake</h1>
