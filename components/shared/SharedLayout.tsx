@@ -2,6 +2,7 @@
 import { ReactNode } from 'react'
 import { useRouter, usePathname } from 'next/navigation'
 import { LayoutDashboard, Users, Settings, LogOut, FileText, TrendingUp, BarChart3 } from 'lucide-react'
+import { authService } from '@/lib/auth'
 
 interface SharedLayoutProps {
   children: ReactNode
@@ -20,8 +21,15 @@ export default function SharedLayout({ children }: SharedLayoutProps) {
     { path: '/settings', icon: Settings, label: 'Settings' },
   ]
 
-  const handleLogout = () => {
-    window.location.href = '/login'
+  const handleLogout = async () => {
+    try {
+      await authService.signOut()
+      router.push('/login')
+    } catch (error) {
+      console.error('Logout error:', error)
+      // Force redirect even if signOut fails
+      window.location.href = '/login'
+    }
   }
 
   return (
@@ -54,7 +62,7 @@ export default function SharedLayout({ children }: SharedLayoutProps) {
         <div className="absolute bottom-0 left-0 p-4 border-t border-white/10" style={{ width: '256px' }}>
           <button onClick={handleLogout} className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-red-600/20 hover:bg-red-600/30 text-red-300 rounded-xl transition-all">
             <LogOut size={20} />
-            <span className="font-medium">Logout</span>
+            <span className="font-medium">Sign Out</span>
           </button>
         </div>
       </aside>
