@@ -1,25 +1,3 @@
-﻿# HubSpot Partner Portal
+﻿# Handshake Partner Portal
 
-A modern Partner Relationship Management (PRM) system integrated with HubSpot.
-
-## Getting Started
-
-First, install dependencies:
-```bash
-npm install
-```
-
-Then, run the development server:
-```bash
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-## Features
-
-- Partner Dashboard
-- Deal Registration
-- Lead Distribution
-- Analytics
-- HubSpot Integration
+Working version restored - 10/27/2025 12:41:26
