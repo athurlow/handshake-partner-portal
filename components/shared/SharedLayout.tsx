@@ -1,7 +1,7 @@
 ﻿"use client"
 import { ReactNode } from 'react'
 import { useRouter, usePathname } from 'next/navigation'
-import { LayoutDashboard, Users, Settings, LogOut } from 'lucide-react'
+import { LayoutDashboard, Users, Settings, LogOut, FileText, TrendingUp, BarChart3 } from 'lucide-react'
 
 interface SharedLayoutProps {
   children: ReactNode
@@ -14,6 +14,9 @@ export default function SharedLayout({ children }: SharedLayoutProps) {
   const navItems = [
     { path: '/', icon: LayoutDashboard, label: 'Dashboard' },
     { path: '/partners', icon: Users, label: 'Partners' },
+    { path: '/deals/registration', icon: FileText, label: 'Deals' },
+    { path: '/leads/distribution', icon: TrendingUp, label: 'Leads' },
+    { path: '/analytics', icon: BarChart3, label: 'Analytics' },
     { path: '/settings', icon: Settings, label: 'Settings' },
   ]
 
