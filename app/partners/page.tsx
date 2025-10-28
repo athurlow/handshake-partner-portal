@@ -134,21 +134,6 @@ export default function PartnersPage() {
           <p className="text-gray-600 text-lg">Manage your partner network and relationships</p>
         </div>
 <div className="min-h-screen bg-gradient-to-br from-gray-50 to-indigo-50 p-8">
-        <div className="mb-8 flex items-center justify-between">
-          <div>
-            <h1 className="text-4xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
-              Partners
-            </h1>
-            <p className="text-gray-600 mt-2">Manage your partner network and grow together</p>
-          </div>
-          <button
-            onClick={() => setShowAddModal(true)}
-            className="group flex items-center gap-2 bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-8 py-4 rounded-xl font-semibold hover:from-indigo-700 hover:to-purple-700 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
-          >
-            <Plus size={20} className="group-hover:rotate-90 transition-transform" />
-            Add Partner
-          </button>
-        </div>
 
         <div className="mb-8">
           <div className="relative max-w-2xl">
