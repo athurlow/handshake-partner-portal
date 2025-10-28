@@ -47,7 +47,7 @@ export default function SettingsPage() {
       <div className="p-8 bg-gradient-to-br from-gray-50 via-indigo-50 to-purple-50 min-h-screen">
         <div className="max-w-5xl mx-auto">
           <div className="mb-8">
-            <h1 className="text-4xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent mb-3">
+            <h1 className="text-4xl font-bold mb-2 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
               Settings
             </h1>
             <p className="text-gray-600 text-lg">Manage your account and data</p>

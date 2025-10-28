@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 import React, { useState } from 'react';
 import { Users, TrendingUp, Award, AlertCircle, ArrowRight, Clock } from 'lucide-react';
 
@@ -107,6 +107,11 @@ export default function LeadDistribution() {
 
   return (
     <div className="p-8">
+      <div className="mb-8">
+        <h1 className="text-4xl font-bold mb-2 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Lead Distribution</h1>
+        <p className="text-gray-600">Manage and distribute leads to your partners</p>
+      </div>
+      <div className="p-8">
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
         <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
           <div className="flex items-center justify-between mb-2">
