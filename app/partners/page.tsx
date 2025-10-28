@@ -179,7 +179,7 @@ export default function PartnersPage() {
             {filteredPartners.map((partner, index) => (
               <div
                 key={partner.id}
-                className="group bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
+                className="group bg-white rounded-2xl shadow-lg border border-gray-200 overflow-hidden transition-shadow duration-300 transform hover:-translate-y-2"
               >
                 <div className={`h-2 ${getTierColor(partner.tier)}`}></div>
 

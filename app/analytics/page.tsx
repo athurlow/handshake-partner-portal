@@ -143,7 +143,7 @@ export default function AnalyticsPage() {
               {stats.map((stat, index) => (
                 <div
                   key={stat.label}
-                  className={`bg-gradient-to-br ${stat.bgColor} rounded-3xl shadow-xl border border-white p-6 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2`}
+                  className={`bg-gradient-to-br ${stat.bgColor} rounded-3xl shadow-xl border border-white p-6 transition-shadow duration-300 transform hover:-translate-y-2`}
                 >
                   <div className="flex items-center justify-between mb-4">
                     <div className={`p-4 bg-gradient-to-br ${stat.color} rounded-2xl shadow-lg`}>
@@ -160,7 +160,7 @@ export default function AnalyticsPage() {
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-              <div className="bg-white rounded-3xl shadow-xl border border-gray-100 p-6 hover:shadow-2xl transition-all">
+              <div className="bg-white rounded-3xl shadow-xl border border-gray-100 p-6 transition-shadow duration-300">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="p-3 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl">
                     <BarChart3 size={24} className="text-white" />
@@ -191,7 +191,7 @@ export default function AnalyticsPage() {
                 </ResponsiveContainer>
               </div>
 
-              <div className="bg-white rounded-3xl shadow-xl border border-gray-100 p-6 hover:shadow-2xl transition-all">
+              <div className="bg-white rounded-3xl shadow-xl border border-gray-100 p-6 transition-shadow duration-300">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="p-3 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl">
                     <Activity size={24} className="text-white" />
@@ -221,7 +221,7 @@ export default function AnalyticsPage() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
-              <div className="bg-white rounded-3xl shadow-xl border border-gray-100 p-6 hover:shadow-2xl transition-all">
+              <div className="bg-white rounded-3xl shadow-xl border border-gray-100 p-6 transition-shadow duration-300">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="p-3 bg-gradient-to-br from-purple-500 to-pink-600 rounded-xl">
                     <PieChart size={24} className="text-white" />
@@ -249,7 +249,7 @@ export default function AnalyticsPage() {
                 </ResponsiveContainer>
               </div>
 
-              <div className="bg-white rounded-3xl shadow-xl border border-gray-100 p-6 hover:shadow-2xl transition-all">
+              <div className="bg-white rounded-3xl shadow-xl border border-gray-100 p-6 transition-shadow duration-300">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="p-3 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-xl">
                     <PieChart size={24} className="text-white" />
@@ -277,7 +277,7 @@ export default function AnalyticsPage() {
                 </ResponsiveContainer>
               </div>
 
-              <div className="bg-white rounded-3xl shadow-xl border border-gray-100 p-6 hover:shadow-2xl transition-all">
+              <div className="bg-white rounded-3xl shadow-xl border border-gray-100 p-6 transition-shadow duration-300">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="p-3 bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl">
                     <Award size={24} className="text-white" />
@@ -306,7 +306,7 @@ export default function AnalyticsPage() {
               </div>
             </div>
 
-            <div className="bg-white rounded-3xl shadow-xl border border-gray-100 p-6 hover:shadow-2xl transition-all">
+            <div className="bg-white rounded-3xl shadow-xl border border-gray-100 p-6 transition-shadow duration-300">
               <div className="flex items-center gap-3 mb-6">
                 <div className="p-3 bg-gradient-to-br from-yellow-500 to-orange-600 rounded-xl">
                   <TrendingUp size={24} className="text-white" />

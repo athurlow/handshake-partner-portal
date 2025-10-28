@@ -84,7 +84,7 @@ export default function SettingsPage() {
                   </div>
                   <button
                     onClick={() => router.push('/upload')}
-                    className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-4 rounded-xl font-bold hover:from-blue-700 hover:to-indigo-700 transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
+                    className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-4 rounded-xl font-bold hover:from-blue-700 hover:to-indigo-700 transition-shadow duration-300 shadow-lg flex items-center justify-center gap-2"
                   >
                     <Upload size={20} />
                     Import CSV Files
@@ -105,7 +105,7 @@ export default function SettingsPage() {
                     <button
                       onClick={() => handleExport('partners')}
                       disabled={exporting}
-                      className="bg-gradient-to-r from-blue-500 to-blue-600 text-white px-6 py-4 rounded-xl font-bold hover:from-blue-600 hover:to-blue-700 transition-all shadow-md hover:shadow-lg disabled:opacity-50 flex items-center justify-center gap-2"
+                      className="bg-gradient-to-r from-blue-500 to-blue-600 text-white px-6 py-4 rounded-xl font-bold hover:from-blue-600 hover:to-blue-700 transition-shadow duration-300 shadow-md hover:shadow-lg disabled:opacity-50 flex items-center justify-center gap-2"
                     >
                       <Download size={18} />
                       Export Partners
@@ -114,7 +114,7 @@ export default function SettingsPage() {
                     <button
                       onClick={() => handleExport('deals')}
                       disabled={exporting}
-                      className="bg-gradient-to-r from-purple-500 to-purple-600 text-white px-6 py-4 rounded-xl font-bold hover:from-purple-600 hover:to-purple-700 transition-all shadow-md hover:shadow-lg disabled:opacity-50 flex items-center justify-center gap-2"
+                      className="bg-gradient-to-r from-purple-500 to-purple-600 text-white px-6 py-4 rounded-xl font-bold hover:from-purple-600 hover:to-purple-700 transition-shadow duration-300 shadow-md hover:shadow-lg disabled:opacity-50 flex items-center justify-center gap-2"
                     >
                       <Download size={18} />
                       Export Deals
@@ -123,7 +123,7 @@ export default function SettingsPage() {
                     <button
                       onClick={() => handleExport('leads')}
                       disabled={exporting}
-                      className="bg-gradient-to-r from-green-500 to-green-600 text-white px-6 py-4 rounded-xl font-bold hover:from-green-600 hover:to-green-700 transition-all shadow-md hover:shadow-lg disabled:opacity-50 flex items-center justify-center gap-2"
+                      className="bg-gradient-to-r from-green-500 to-green-600 text-white px-6 py-4 rounded-xl font-bold hover:from-green-600 hover:to-green-700 transition-shadow duration-300 shadow-md hover:shadow-lg disabled:opacity-50 flex items-center justify-center gap-2"
                     >
                       <Download size={18} />
                       Export Leads
@@ -161,7 +161,7 @@ export default function SettingsPage() {
                     <div className="flex-1">
                       <label className="block">
                         <input type="file" accept="image/*" className="hidden" />
-                        <div className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-3 rounded-xl font-bold hover:from-purple-700 hover:to-pink-700 transition-all cursor-pointer inline-flex items-center gap-2">
+                        <div className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-3 rounded-xl font-bold hover:from-purple-700 hover:to-pink-700 transition-shadow duration-300 cursor-pointer inline-flex items-center gap-2">
                           <Upload size={18} />
                           Upload Logo
                         </div>
@@ -217,7 +217,7 @@ export default function SettingsPage() {
                       </div>
                     </div>
                   </div>
-                  <button className="mt-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-3 rounded-xl font-bold hover:from-purple-700 hover:to-pink-700 transition-all shadow-lg">
+                  <button className="mt-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-3 rounded-xl font-bold hover:from-purple-700 hover:to-pink-700 transition-shadow duration-300 shadow-lg">
                     Save Brand Settings
                   </button>
                 </div>
@@ -249,7 +249,7 @@ export default function SettingsPage() {
                     placeholder="Your Company"
                   />
                 </div>
-                <button className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-3 rounded-xl font-bold hover:from-indigo-700 hover:to-purple-700 transition-all shadow-lg">
+                <button className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-3 rounded-xl font-bold hover:from-indigo-700 hover:to-purple-700 transition-shadow duration-300 shadow-lg">
                   Save Account Settings
                 </button>
               </div>
@@ -287,7 +287,7 @@ export default function SettingsPage() {
                 </div>
                 <h2 className="text-2xl font-bold text-gray-900">Security</h2>
               </div>
-              <button className="w-full bg-gradient-to-r from-red-600 to-pink-600 text-white px-6 py-3 rounded-xl font-bold hover:from-red-700 hover:to-pink-700 transition-all shadow-lg">
+              <button className="w-full bg-gradient-to-r from-red-600 to-pink-600 text-white px-6 py-3 rounded-xl font-bold hover:from-red-700 hover:to-pink-700 transition-shadow duration-300 shadow-lg">
                 Change Password
               </button>
             </div>

@@ -114,7 +114,7 @@ export default function LeadDistribution() {
       
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
-        <div className="bg-gradient-to-br from-white to-blue-50 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl hover:scale-105 transition-all duration-300 p-4">
+        <div className="bg-gradient-to-br from-white to-blue-50 rounded-2xl shadow-lg border border-gray-100 transition-shadow duration-300 p-4">
           <div className="flex items-center justify-between mb-2">
             <Users className="text-indigo-600" size={24} />
           </div>
@@ -123,7 +123,7 @@ export default function LeadDistribution() {
           <p className="text-xs text-green-600 mt-1">+12% this month</p>
         </div>
 
-        <div className="bg-gradient-to-br from-white to-blue-50 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl hover:scale-105 transition-all duration-300 p-4">
+        <div className="bg-gradient-to-br from-white to-blue-50 rounded-2xl shadow-lg border border-gray-100 transition-shadow duration-300 p-4">
           <div className="flex items-center justify-between mb-2">
             <TrendingUp className="text-green-600" size={24} />
           </div>
@@ -132,7 +132,7 @@ export default function LeadDistribution() {
           <p className="text-xs text-green-600 mt-1">+5% from last month</p>
         </div>
 
-        <div className="bg-gradient-to-br from-white to-blue-50 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl hover:scale-105 transition-all duration-300 p-4">
+        <div className="bg-gradient-to-br from-white to-blue-50 rounded-2xl shadow-lg border border-gray-100 transition-shadow duration-300 p-4">
           <div className="flex items-center justify-between mb-2">
             <Clock className="text-amber-600" size={24} />
           </div>
@@ -141,7 +141,7 @@ export default function LeadDistribution() {
           <p className="text-xs text-red-600 mt-1">+0.5h from last month</p>
         </div>
 
-        <div className="bg-gradient-to-br from-white to-blue-50 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl hover:scale-105 transition-all duration-300 p-4">
+        <div className="bg-gradient-to-br from-white to-blue-50 rounded-2xl shadow-lg border border-gray-100 transition-shadow duration-300 p-4">
           <div className="flex items-center justify-between mb-2">
             <Award className="text-purple-600" size={24} />
           </div>
@@ -152,7 +152,7 @@ export default function LeadDistribution() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
-        <div className="lg:col-span-2 bg-gradient-to-br from-white to-blue-50 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl hover:scale-105 transition-all duration-300">
+        <div className="lg:col-span-2 bg-gradient-to-br from-white to-blue-50 rounded-2xl shadow-lg border border-gray-100 transition-shadow duration-300">
           <div className="px-6 py-4 border-b border-gray-200">
             <h2 className="text-lg font-semibold text-gray-900">Partner Performance</h2>
           </div>
@@ -218,7 +218,7 @@ export default function LeadDistribution() {
           </div>
         </div>
 
-        <div className="bg-gradient-to-br from-white to-blue-50 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl hover:scale-105 transition-all duration-300">
+        <div className="bg-gradient-to-br from-white to-blue-50 rounded-2xl shadow-lg border border-gray-100 transition-shadow duration-300">
           <div className="px-6 py-4 border-b border-gray-200">
             <h2 className="text-lg font-semibold text-gray-900">Distribution Rules</h2>
           </div>
@@ -250,7 +250,7 @@ export default function LeadDistribution() {
         </div>
       </div>
 
-      <div className="bg-gradient-to-br from-white to-blue-50 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl hover:scale-105 transition-all duration-300">
+      <div className="bg-gradient-to-br from-white to-blue-50 rounded-2xl shadow-lg border border-gray-100 transition-shadow duration-300">
         <div className="px-6 py-4 border-b border-gray-200 flex items-center justify-between">
           <h2 className="text-lg font-semibold text-gray-900">Recent Distributions</h2>
           <button className="text-indigo-600 hover:text-indigo-700 text-sm font-medium flex items-center gap-1">
