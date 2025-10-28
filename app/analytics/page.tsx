@@ -128,9 +128,7 @@ export default function AnalyticsPage() {
     <SharedLayout>
       <div className="p-8 bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 min-h-screen">
         <div className="mb-8">
-          <h1 className="text-5xl font-bold bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent mb-3">
-            Analytics Dashboard
-          </h1>
+          <h1 className="text-5xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent mb-3">Analytics</h1>
           <p className="text-gray-600 text-lg">Real-time insights and performance metrics</p>
         </div>
 
