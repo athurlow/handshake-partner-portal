@@ -127,6 +127,11 @@ export default function PartnersPage() {
 
   return (
     <SharedLayout>
+      <div className="mb-8">
+        <h1 className="text-4xl font-bold mb-2 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Partners</h1>
+        <p className="text-gray-600">Manage your partner network and relationships</p>
+      </div>
+
       <div className="min-h-screen bg-gradient-to-br from-gray-50 to-indigo-50 p-8">
         <div className="mb-8 flex items-center justify-between">
           <div>

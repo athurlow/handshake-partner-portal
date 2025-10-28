@@ -99,24 +99,19 @@ export default function LeadDistribution() {
       qualified: 'bg-green-100 text-green-700'
     };
     return (
-      <div className="min-h-screen">
-    <div className="p-8">
-      <div className="mb-8">
-        <h1 className="text-4xl font-bold mb-2 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Lead Distribution</h1>
-        <p className="text-gray-600">Manage and distribute leads to your partners</p>
-      </div>span className={`px-3 py-1 rounded-full text-xs font-medium ${styles[status as keyof typeof styles]}`}>
+      <span className={`px-3 py-1 rounded-full text-xs font-medium ${styles[status as keyof typeof styles]}`}>
         {status.charAt(0).toUpperCase() + status.slice(1)}
       </span>
     );
   };
 
   return (
-    <div className="min-h-screen">
     <div className="p-8">
       <div className="mb-8">
         <h1 className="text-4xl font-bold mb-2 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Lead Distribution</h1>
         <p className="text-gray-600">Manage and distribute leads to your partners</p>
-      </div>div className="p-8">
+      </div>
+
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
         <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
           <div className="flex items-center justify-between mb-2">
@@ -307,7 +302,6 @@ export default function LeadDistribution() {
           </table>
         </div>
       </div>
-    </div>    </div>
-
+    </div>
   );
 }
