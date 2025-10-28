@@ -108,23 +108,23 @@ export default function DealRegistration() {
       
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
+        <div className="bg-gradient-to-br from-white to-gray-50 rounded-2xl shadow-lg border border-gray-200 hover:shadow-xl hover:scale-105 transition-all duration-300 p-4">
           <p className="text-gray-600 text-sm font-medium">Total Deals</p>
           <p className="text-2xl font-bold text-gray-900 mt-1">{deals.length}</p>
         </div>
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
+        <div className="bg-gradient-to-br from-white to-gray-50 rounded-2xl shadow-lg border border-gray-200 hover:shadow-xl hover:scale-105 transition-all duration-300 p-4">
           <p className="text-gray-600 text-sm font-medium">Approved</p>
           <p className="text-2xl font-bold text-green-600 mt-1">
             {deals.filter(d => d.status === 'approved').length}
           </p>
         </div>
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
+        <div className="bg-gradient-to-br from-white to-gray-50 rounded-2xl shadow-lg border border-gray-200 hover:shadow-xl hover:scale-105 transition-all duration-300 p-4">
           <p className="text-gray-600 text-sm font-medium">Pending</p>
           <p className="text-2xl font-bold text-yellow-600 mt-1">
             {deals.filter(d => d.status === 'pending').length}
           </p>
         </div>
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
+        <div className="bg-gradient-to-br from-white to-gray-50 rounded-2xl shadow-lg border border-gray-200 hover:shadow-xl hover:scale-105 transition-all duration-300 p-4">
           <p className="text-gray-600 text-sm font-medium">Total Value</p>
           <p className="text-2xl font-bold text-gray-900 mt-1">
             ${deals.reduce((sum, d) => sum + d.value, 0).toLocaleString()}
@@ -132,7 +132,7 @@ export default function DealRegistration() {
         </div>
       </div>
 
-      <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 mb-6">
+      <div className="bg-gradient-to-br from-white to-gray-50 rounded-2xl shadow-lg border border-gray-200 hover:shadow-xl hover:scale-105 transition-all duration-300 p-4 mb-6">
         <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
           <div className="flex flex-1 gap-4 w-full md:w-auto">
             <div className="relative flex-1 md:max-w-md">
@@ -170,7 +170,7 @@ export default function DealRegistration() {
       </div>
 
       {showForm && (
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 mb-6">
+        <div className="bg-gradient-to-br from-white to-gray-50 rounded-2xl shadow-lg border border-gray-200 hover:shadow-xl hover:scale-105 transition-all duration-300 p-6 mb-6">
           <h2 className="text-xl font-semibold text-gray-900 mb-4">New Deal Registration</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
             <div>
@@ -251,7 +251,7 @@ export default function DealRegistration() {
         </div>
       )}
 
-      <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+      <div className="bg-gradient-to-br from-white to-gray-50 rounded-2xl shadow-lg border border-gray-200 hover:shadow-xl hover:scale-105 transition-all duration-300 overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead className="bg-gray-50 border-b border-gray-200">
