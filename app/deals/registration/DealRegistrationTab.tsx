@@ -101,7 +101,11 @@ export default function DealRegistration() {
 
   return (
     <div className="p-8">
-      <div className="mb-8">`n        <h1 className="text-5xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent mb-3">Deal Registration</h1>`n        <p className="text-gray-600 text-lg">Register and manage partner deals</p>`n      </div>
+      <div className="mb-8">
+        <h1 className="text-5xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent mb-3">Deal Registration</h1>
+        <p className="text-gray-600 text-lg">Register and manage partner deals</p>
+      </div>
+      
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
         <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
